@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercice12</title>
+</head>
+<body>
+     <label>Saisir le nom de la personne à supprimer :</label>
+     <input type="text" id="nom"/>
+     <button class="btn">Supprimer</button>
+     <div id="resultat"></div>
+
+     <script>
+         const inputNom = document.querySelector("#nom");
+            const btn = document.querySelector(".btn");
+            const resultat = document.querySelector("#resultat");
+
+            let tabs = [
+                { nom: "Tya", age: 25 },
+                { nom: "Toto", age: 22 },
+                { nom: "Milo", age: 32 },
+                { nom: "Mina", age: 32 },
+            ];
+            resultat.innerHTML = afficherPersonne(tabs)
+
+            btn.addEventListener('click', () => {
+                    let Newnom = inputNom.value;
+                    const indice = tabs.findIndex(function (personne) {
+                        return personne.nom === Newnom
+                    })
+                    tabs.splice(indice, 1)
+                    resultat.innerHTML = afficherPersonne(tabs)
+                });
+
+            /*
+               **Afficher la Personne
+
+            */
+            function afficherPersonne(tabs)
+            {
+                let text =`<ul>`
+                for(let index in tabs){
+                    text+= `<li> Nom : ${tabs[index].nom} -Age : ${tabs[index].age}</li>`
+                }
+                text+=`</ul>`
+                return text;
+            }
+           
+
+     </script>
+     
+</body>
+</html>

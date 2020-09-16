@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercice14</title>
+</head>
+
+<body>
+    <label>Saisir le mot:</label>
+    <input type="text" id="nom" />
+    <button class="btn">valider</button>
+    <div id="resultat"></div>
+    <script>
+        const nom = document.querySelector("#nom");
+        const btn = document.querySelector(".btn");
+        const resultat = document.querySelector("#resultat");
+
+        btn.addEventListener("click", () => {
+            const mot = nom.value;
+            resultat.innerHTML = result(mot)
+
+
+        })
+
+        function estPalindrome(mot) {
+            const tabs = mot.split('');
+            const tabInv = tabs.slice().reverse();
+            for (let index in tabs) {
+                if (tabs[index] !== tabInv[index]) {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        function result(mot) {
+            let text = ``
+            if (estPalindrome(mot)) {
+                text = `${mot} est palindrome`
+            } else {
+                text = `${mot} n'est pas palindrome`
+
+            }
+            return text
+        }
+    </script>
+</body>
+
+</html>
